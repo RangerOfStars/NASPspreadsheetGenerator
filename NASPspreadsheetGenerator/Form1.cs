@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using System.Xml;
 
 
@@ -72,7 +73,6 @@ namespace NASPspreadsheetGenerator
                     string archerFirstName = nameHold[0];
                     string alphabetizedArcherName = $"{archerLastName}, {archerFirstName}";
                     archerAlphabeticalNames.Add(alphabetizedArcherName);
-                    MessageBox.Show(alphabetizedArcherName);
                     #endregion
 
                     string archerHistoryID = values[3];
@@ -89,16 +89,103 @@ namespace NASPspreadsheetGenerator
                     int nines = Convert.ToInt32(values[14]);
                     int eights = Convert.ToInt32(values[15]);
                     int sevens = Convert.ToInt32(values[16]);
+                    #region arrows
                     int arrow1 = Convert.ToInt32(values[17]);
                     int arrow2 = Convert.ToInt32(values[18]);
                     int arrow3 = Convert.ToInt32(values[19]);
                     int arrow4 = Convert.ToInt32(values[20]);
+                    int arrow5 = Convert.ToInt32(values[21]);
+                    int arrow6 = Convert.ToInt32(values[22]);
+                    int arrow7 = Convert.ToInt32(values[23]);
+                    int arrow8 = Convert.ToInt32(values[24]);
+                    int arrow9 = Convert.ToInt32(values[25]);
+                    int arrow10 = Convert.ToInt32(values[26]);
+                    int arrow11 = Convert.ToInt32(values[27]);
+                    int arrow12 = Convert.ToInt32(values[28]);
+                    int arrow13 = Convert.ToInt32(values[29]);
+                    int arrow14 = Convert.ToInt32(values[30]);
+                    int arrow15 = Convert.ToInt32(values[31]);
+                    int arrow16 = Convert.ToInt32(values[32]);
+                    int arrow17 = Convert.ToInt32(values[33]);
+                    int arrow18 = Convert.ToInt32(values[34]);
+                    int arrow19 = Convert.ToInt32(values[35]);
+                    int arrow20 = Convert.ToInt32(values[36]);
+                    int arrow21 = Convert.ToInt32(values[37]);
+                    int arrow22 = Convert.ToInt32(values[37]);
+                    int arrow23 = Convert.ToInt32(values[38]);
+                    int arrow24 = Convert.ToInt32(values[39]);
+                    int arrow25 = Convert.ToInt32(values[40]);
+                    int arrow26 = Convert.ToInt32(values[41]);
+                    int arrow27 = Convert.ToInt32(values[41]);
+                    int arrow28 = Convert.ToInt32(values[42]);
+                    int arrow29 = Convert.ToInt32(values[43]);
+                    int arrow30 = Convert.ToInt32(values[44]);
+                    #endregion
+                    #region Round Scores
+                    int tenMeter50s = 0;
+                    int fifteenMeter50s = 0;
+                    int round1 = arrow1 + arrow2 + arrow3 + arrow4 + arrow5;
+                    int round2 = arrow6 + arrow7 + arrow8 + arrow9 + arrow10;
+                    int round3 = arrow12 + arrow13 + arrow14 + arrow15 + arrow11;
+                    int round4 = arrow17 + arrow18 + arrow19 + arrow20 + arrow16;
+                    int round5 = arrow22 + arrow23 + arrow24 + arrow25 + arrow21;
+                    int round6 = arrow27 + arrow28 + arrow29 + arrow30 + arrow26;
 
+                    if (round1 == 50)
+                    {
+                        tenMeter50s++;
+                    }
+                    if (round2 == 50)
+                    {
+                        tenMeter50s++;
+                    }
+                    if (round3 == 50)
+                    {
+                        tenMeter50s++;
+                    }
+                    if (round4 == 50)
+                    {
+                        fifteenMeter50s++;
+                    }
+                    if (round5 == 50)
+                    {
+                        fifteenMeter50s++;
+                    }
+                    if (round6 == 50)
+                    {
+                        fifteenMeter50s++;
+                    }
+                    #endregion
 
-
-
-                    //archerData.Add();
-
+                    temp.Add(tournamentName);
+                    temp.Add(schoolName);
+                    temp.Add(archerFullName);
+                    temp.Add(archerHistoryID);
+                    temp.Add(grade);
+                    temp.Add(gender);
+                    temp.Add(state);
+                    temp.Add(country);
+                    temp.Add(endDate);
+                    temp.Add(rangeType);
+                    temp.Add(division);
+                    temp.Add(rank);
+                    temp.Add(score.ToString());
+                    temp.Add(tens.ToString());
+                    temp.Add(nines.ToString());
+                    temp.Add(eights.ToString());
+                    temp.Add(sevens.ToString());
+                    temp.Add(round1.ToString());
+                    temp.Add(round2.ToString());
+                    temp.Add(round3.ToString());
+                    temp.Add(round4.ToString());
+                    temp.Add(round5.ToString());
+                    temp.Add(round6.ToString());
+                    temp.Add(tenMeter50s.ToString());
+                    temp.Add(fifteenMeter50s.ToString());
+                    archerData.Add(alphabetizedArcherName, temp);
+                    //MAJOR ISSUE WITH DUPLICATE ARCHER NAMES, NEED TO FIND A SOLUTION
+                    //SOLUTION 1: Create a dictionary of lists, and for each name and the corresponding IDs, and then do a lookup depending on which archer the user selects
+                    //promising one that i think i can figure out quickly.
                 }
                 else
                 {

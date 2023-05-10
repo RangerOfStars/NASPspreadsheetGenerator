@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPrimary = new System.Windows.Forms.TextBox();
             this.cboFilter = new System.Windows.Forms.ComboBox();
             this.lstPrimary = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,12 +38,13 @@
             this.ofdOpen = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtPrimary
             // 
-            this.textBox1.Location = new System.Drawing.Point(74, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(234, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtPrimary.Location = new System.Drawing.Point(74, 17);
+            this.txtPrimary.Name = "txtPrimary";
+            this.txtPrimary.Size = new System.Drawing.Size(234, 20);
+            this.txtPrimary.TabIndex = 0;
+            this.txtPrimary.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // cboFilter
             // 
@@ -65,6 +66,7 @@
             this.lstPrimary.Location = new System.Drawing.Point(74, 58);
             this.lstPrimary.Name = "lstPrimary";
             this.lstPrimary.Size = new System.Drawing.Size(234, 355);
+            this.lstPrimary.Sorted = true;
             this.lstPrimary.TabIndex = 2;
             // 
             // label1
@@ -114,14 +116,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1087, 534);
+            this.ClientSize = new System.Drawing.Size(1289, 534);
             this.Controls.Add(this.lstSecondary);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lstPrimary);
             this.Controls.Add(this.cboFilter);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPrimary);
             this.Name = "Form1";
             this.Text = "NASP Tournament Generator";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -132,7 +134,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPrimary;
         private System.Windows.Forms.ComboBox cboFilter;
         private System.Windows.Forms.ListBox lstPrimary;
         private System.Windows.Forms.Label label1;

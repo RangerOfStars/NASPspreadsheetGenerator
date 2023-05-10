@@ -7,10 +7,12 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml;
+using System.Xml.Linq;
 
 
 namespace NASPspreadsheetGenerator
@@ -68,9 +70,16 @@ namespace NASPspreadsheetGenerator
 
                     #region Archer Name Setup
                     string archerFullName = values[2];
+                    
                     var nameHold = archerFullName.Split(' ');
+
                     string archerLastName = nameHold[1];
+                    Regex rgx = new Regex("[^a-zA-Z0-9 -]");
+                    archerLastName = rgx.Replace(archerLastName, "");
+
                     string archerFirstName = nameHold[0];
+                    archerFirstName = rgx.Replace(archerFirstName, "");
+
                     string alphabetizedArcherName = $"{archerLastName}, {archerFirstName}";
                     archerAlphabeticalNames.Add(alphabetizedArcherName);
                     #endregion
@@ -121,6 +130,7 @@ namespace NASPspreadsheetGenerator
                     int arrow29 = Convert.ToInt32(values[43]);
                     int arrow30 = Convert.ToInt32(values[44]);
                     #endregion
+
                     #region Round Scores
                     int tenMeter50s = 0;
                     int fifteenMeter50s = 0;
@@ -157,6 +167,9 @@ namespace NASPspreadsheetGenerator
                     }
                     #endregion
 
+                    #region Archer Data Setup
+                    string key = $"{alphabetizedArcherName} ({archerHistoryID})";
+
                     temp.Add(tournamentName);
                     temp.Add(schoolName);
                     temp.Add(archerFullName);
@@ -182,14 +195,45 @@ namespace NASPspreadsheetGenerator
                     temp.Add(round6.ToString());
                     temp.Add(tenMeter50s.ToString());
                     temp.Add(fifteenMeter50s.ToString());
-                    archerData.Add(alphabetizedArcherName, temp);
+                    archerData.Add(key, temp);
+                    //key = "Jones, Graham (1234567)"
                     //MAJOR ISSUE WITH DUPLICATE ARCHER NAMES, NEED TO FIND A SOLUTION
-                    //SOLUTION 1: Create a dictionary of lists, and for each name and the corresponding IDs, and then do a lookup depending on which archer the user selects
-                    //promising one that i think i can figure out quickly.
+                    //.contains with the key to see if the list of items that match is > 1, if so then bring up dialog selecting between the two
+                    #endregion
+
                 }
                 else
                 {
                     k++;
+                }
+            }
+            ListBoxSetup();
+        }
+
+        private void ListBoxSetup()
+        {
+            if (cboFilter.SelectedIndex == 0) //student setup
+            {
+                lstPrimary.Items.Clear();
+                foreach (string i in archerAlphabeticalNames)
+                {
+                    if (!lstPrimary.Items.Contains(i))
+                    {
+                        lstPrimary.Items.Add(i);
+                    }
+                }
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string input = txtPrimary.Text;
+            lstPrimary.Items.Clear();
+            foreach (string name in archerAlphabeticalNames)
+            {
+                if (name.ToLowerInvariant().Contains(input.ToLowerInvariant()) && !!lstPrimary.Items.Contains(name))
+                {
+                    lstPrimary.Items.Add(name);
                 }
             }
         }

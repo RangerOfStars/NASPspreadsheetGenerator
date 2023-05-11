@@ -68,6 +68,7 @@
             this.lstPrimary.Size = new System.Drawing.Size(234, 355);
             this.lstPrimary.Sorted = true;
             this.lstPrimary.TabIndex = 2;
+            this.lstPrimary.SelectedIndexChanged += new System.EventHandler(this.lstPrimary_SelectedIndexChanged);
             // 
             // label1
             // 

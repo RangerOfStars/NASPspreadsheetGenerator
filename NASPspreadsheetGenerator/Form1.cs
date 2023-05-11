@@ -1,5 +1,6 @@
 ﻿using System;
 using System.CodeDom.Compiler;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -98,6 +99,18 @@ namespace NASPspreadsheetGenerator
                     int nines = Convert.ToInt32(values[14]);
                     int eights = Convert.ToInt32(values[15]);
                     int sevens = Convert.ToInt32(values[16]);
+
+                    var schoolKeys = schoolData.Keys.ToArray();
+                    foreach (var school in schoolKeys)
+                    {
+                        if (!schoolData.ContainsKey(school))
+                        {
+                            //add
+                            schoolData.Add(school, new List<string>());
+                        }
+                        schoolData[school].Add(alphabetizedArcherName);
+                    }
+
                     #region arrows
                     int arrow1 = Convert.ToInt32(values[17]);
                     int arrow2 = Convert.ToInt32(values[18]);
@@ -222,19 +235,59 @@ namespace NASPspreadsheetGenerator
                         lstPrimary.Items.Add(i);
                     }
                 }
+                
+                string input = txtPrimary.Text;
+                lstPrimary.Items.Clear();
+                foreach (string name in archerAlphabeticalNames)
+                {
+                    if (name.ToLowerInvariant().Contains(input.ToLowerInvariant()) && !lstPrimary.Items.Contains(name))
+                    {
+                        lstPrimary.Items.Add(name);
+                    }
+                }
+                
             }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string input = txtPrimary.Text;
-            lstPrimary.Items.Clear();
-            foreach (string name in archerAlphabeticalNames)
+            if (cboFilter.SelectedIndex == 0)
             {
-                if (name.ToLowerInvariant().Contains(input.ToLowerInvariant()) && !!lstPrimary.Items.Contains(name))
+                string input = txtPrimary.Text;
+                lstPrimary.Items.Clear();
+                foreach (string name in archerAlphabeticalNames)
                 {
-                    lstPrimary.Items.Add(name);
+                    if (name.ToLowerInvariant().Contains(input.ToLowerInvariant()) && !lstPrimary.Items.Contains(name))
+                    {
+                        lstPrimary.Items.Add(name);
+                    }
                 }
+            }
+        }
+
+        private void lstPrimary_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboFilter.SelectedIndex == 0)
+            {
+                var arrayOfAllKeys = archerData.Keys.ToArray();
+                List<string> temporarystorage = new List<string>();
+                foreach (string key in arrayOfAllKeys)
+                {
+                    if (key.Contains(lstPrimary.SelectedItem.ToString()))
+                    {
+                        temporarystorage.Add(key);
+                    }
+                }
+
+                if (temporarystorage.Count > 1)
+                {
+                    MessageBox.Show("Housten we got duplicates.");
+                    foreach(string i in temporarystorage)
+                    {
+                        MessageBox.Show(i);
+                    }
+                }
+                temporarystorage.Clear();
             }
         }
     }

@@ -287,6 +287,10 @@ namespace NASPspreadsheetGenerator
                         MessageBox.Show(i);
                     }
                 }
+
+
+
+
                 temporarystorage.Clear();
             }
         }

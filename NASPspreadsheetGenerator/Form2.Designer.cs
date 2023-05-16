@@ -43,11 +43,11 @@
             this.btnArcher6 = new System.Windows.Forms.Button();
             this.lblArcher7 = new System.Windows.Forms.Label();
             this.btnArcher7 = new System.Windows.Forms.Button();
-            this.lblArcher10 = new System.Windows.Forms.Label();
+            this.lblArcher8 = new System.Windows.Forms.Label();
             this.btnArcher8 = new System.Windows.Forms.Button();
-            this.lblArcher11 = new System.Windows.Forms.Label();
+            this.lblArcher9 = new System.Windows.Forms.Label();
             this.btnArcher9 = new System.Windows.Forms.Button();
-            this.lblArcher12 = new System.Windows.Forms.Label();
+            this.lblArcher10 = new System.Windows.Forms.Label();
             this.btnArcher10 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -202,16 +202,16 @@
             this.btnArcher7.Text = "Select";
             this.btnArcher7.UseVisualStyleBackColor = true;
             // 
-            // lblArcher10
+            // lblArcher8
             // 
-            this.lblArcher10.AutoSize = true;
-            this.lblArcher10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArcher10.Location = new System.Drawing.Point(270, 200);
-            this.lblArcher10.Name = "lblArcher10";
-            this.lblArcher10.Size = new System.Drawing.Size(106, 72);
-            this.lblArcher10.TabIndex = 21;
-            this.lblArcher10.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
-            this.lblArcher10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblArcher8.AutoSize = true;
+            this.lblArcher8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArcher8.Location = new System.Drawing.Point(270, 200);
+            this.lblArcher8.Name = "lblArcher8";
+            this.lblArcher8.Size = new System.Drawing.Size(106, 72);
+            this.lblArcher8.TabIndex = 21;
+            this.lblArcher8.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
+            this.lblArcher8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnArcher8
             // 
@@ -222,16 +222,16 @@
             this.btnArcher8.Text = "Select";
             this.btnArcher8.UseVisualStyleBackColor = true;
             // 
-            // lblArcher11
+            // lblArcher9
             // 
-            this.lblArcher11.AutoSize = true;
-            this.lblArcher11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArcher11.Location = new System.Drawing.Point(396, 200);
-            this.lblArcher11.Name = "lblArcher11";
-            this.lblArcher11.Size = new System.Drawing.Size(106, 72);
-            this.lblArcher11.TabIndex = 23;
-            this.lblArcher11.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
-            this.lblArcher11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblArcher9.AutoSize = true;
+            this.lblArcher9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArcher9.Location = new System.Drawing.Point(396, 200);
+            this.lblArcher9.Name = "lblArcher9";
+            this.lblArcher9.Size = new System.Drawing.Size(106, 72);
+            this.lblArcher9.TabIndex = 23;
+            this.lblArcher9.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
+            this.lblArcher9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnArcher9
             // 
@@ -242,16 +242,16 @@
             this.btnArcher9.Text = "Select";
             this.btnArcher9.UseVisualStyleBackColor = true;
             // 
-            // lblArcher12
+            // lblArcher10
             // 
-            this.lblArcher12.AutoSize = true;
-            this.lblArcher12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArcher12.Location = new System.Drawing.Point(534, 200);
-            this.lblArcher12.Name = "lblArcher12";
-            this.lblArcher12.Size = new System.Drawing.Size(106, 72);
-            this.lblArcher12.TabIndex = 25;
-            this.lblArcher12.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
-            this.lblArcher12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblArcher10.AutoSize = true;
+            this.lblArcher10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblArcher10.Location = new System.Drawing.Point(534, 200);
+            this.lblArcher10.Name = "lblArcher10";
+            this.lblArcher10.Size = new System.Drawing.Size(106, 72);
+            this.lblArcher10.TabIndex = 25;
+            this.lblArcher10.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
+            this.lblArcher10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnArcher10
             // 
@@ -267,11 +267,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(654, 323);
-            this.Controls.Add(this.lblArcher12);
-            this.Controls.Add(this.btnArcher10);
-            this.Controls.Add(this.lblArcher11);
-            this.Controls.Add(this.btnArcher9);
             this.Controls.Add(this.lblArcher10);
+            this.Controls.Add(this.btnArcher10);
+            this.Controls.Add(this.lblArcher9);
+            this.Controls.Add(this.btnArcher9);
+            this.Controls.Add(this.lblArcher8);
             this.Controls.Add(this.btnArcher8);
             this.Controls.Add(this.lblArcher7);
             this.Controls.Add(this.btnArcher7);
@@ -315,11 +315,11 @@
         private System.Windows.Forms.Button btnArcher6;
         private System.Windows.Forms.Label lblArcher7;
         private System.Windows.Forms.Button btnArcher7;
-        private System.Windows.Forms.Label lblArcher10;
+        private System.Windows.Forms.Label lblArcher8;
         private System.Windows.Forms.Button btnArcher8;
-        private System.Windows.Forms.Label lblArcher11;
+        private System.Windows.Forms.Label lblArcher9;
         private System.Windows.Forms.Button btnArcher9;
-        private System.Windows.Forms.Label lblArcher12;
+        private System.Windows.Forms.Label lblArcher10;
         private System.Windows.Forms.Button btnArcher10;
     }
 }

@@ -29,6 +29,7 @@ namespace NASPspreadsheetGenerator
         IDictionary<string, List<string>> archerData = new Dictionary<string, List<string>>();
         IDictionary<string, List<string>> schoolData = new Dictionary<string, List<string>>();
         List<string> archerAlphabeticalNames = new List<string>();
+        Form2 archerSelect = new Form2();
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -281,16 +282,23 @@ namespace NASPspreadsheetGenerator
 
                 if (temporarystorage.Count > 1)
                 {
-                    MessageBox.Show("Housten we got duplicates.");
-                    foreach(string i in temporarystorage)
+                    archerSelect.ShowDialog();
+                    for (int i = 0; i < temporarystorage.Count; i++)
                     {
-                        MessageBox.Show(i);
+                        /*tournament name, school name, archer name("Graham Jones"), archer history ID,
+                        *grade, gender, state, country, end date, range type, division type (school only not gender),
+                        *rank (gender and divison, ex. High School Boys), score, 10s, 9s, 8s, 7s, Arrow 1, Arrow 2, Arrow 3,
+                        *Arrow 4, Arrow 5, Arrow 6, Arrow 7, Arrow 8, Arrow 9, Arrow 10, Arrow 11, Arrow 12, Arrow 13,
+                        *Arrow 14, Arrow 15, Arrow 16, Arrow 17, Arrow 18, Arrow 19, Arrow 20, Arrow 21, Arrow 22, Arrow 23,
+                        *Arrow 24, Arrow 25, Arrow 26, Arrow 27, Arrow 28, Arrow 29, Arrow 30
+                        */
+                        archerSelect.key.Add(temporarystorage[i]);
+                        archerSelect.names.Add(archerData[temporarystorage[i]][2]);
+                        archerSelect.gender.Add(archerData[temporarystorage[i]][5]);
+                        archerSelect.school.Add(archerData[temporarystorage[i]][1]);
+                        archerSelect.grade.Add(archerData[temporarystorage[i]][4]);
                     }
                 }
-
-
-
-
                 temporarystorage.Clear();
             }
         }

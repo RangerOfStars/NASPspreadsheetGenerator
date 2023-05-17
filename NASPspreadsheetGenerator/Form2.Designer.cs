@@ -72,6 +72,7 @@
             this.lblArcher1.TabIndex = 7;
             this.lblArcher1.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
             this.lblArcher1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblArcher1.Visible = false;
             // 
             // btnArcher1
             // 
@@ -81,6 +82,8 @@
             this.btnArcher1.TabIndex = 8;
             this.btnArcher1.Text = "Select";
             this.btnArcher1.UseVisualStyleBackColor = true;
+            this.btnArcher1.Visible = false;
+            this.btnArcher1.Click += new System.EventHandler(this.btnClick);
             // 
             // lblArcher2
             // 
@@ -92,6 +95,7 @@
             this.lblArcher2.TabIndex = 9;
             this.lblArcher2.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
             this.lblArcher2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblArcher2.Visible = false;
             // 
             // btnArcher2
             // 
@@ -101,6 +105,8 @@
             this.btnArcher2.TabIndex = 10;
             this.btnArcher2.Text = "Select";
             this.btnArcher2.UseVisualStyleBackColor = true;
+            this.btnArcher2.Visible = false;
+            this.btnArcher2.Click += new System.EventHandler(this.btnClick);
             // 
             // lblArcher3
             // 
@@ -112,6 +118,7 @@
             this.lblArcher3.TabIndex = 11;
             this.lblArcher3.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
             this.lblArcher3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblArcher3.Visible = false;
             // 
             // btnArcher3
             // 
@@ -121,6 +128,8 @@
             this.btnArcher3.TabIndex = 12;
             this.btnArcher3.Text = "Select";
             this.btnArcher3.UseVisualStyleBackColor = true;
+            this.btnArcher3.Visible = false;
+            this.btnArcher3.Click += new System.EventHandler(this.btnClick);
             // 
             // lblArcher4
             // 
@@ -132,6 +141,7 @@
             this.lblArcher4.TabIndex = 13;
             this.lblArcher4.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
             this.lblArcher4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblArcher4.Visible = false;
             // 
             // btnArcher4
             // 
@@ -141,6 +151,8 @@
             this.btnArcher4.TabIndex = 14;
             this.btnArcher4.Text = "Select";
             this.btnArcher4.UseVisualStyleBackColor = true;
+            this.btnArcher4.Visible = false;
+            this.btnArcher4.Click += new System.EventHandler(this.btnClick);
             // 
             // lblArcher5
             // 
@@ -152,6 +164,7 @@
             this.lblArcher5.TabIndex = 15;
             this.lblArcher5.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
             this.lblArcher5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblArcher5.Visible = false;
             // 
             // btnArcher5
             // 
@@ -161,6 +174,8 @@
             this.btnArcher5.TabIndex = 16;
             this.btnArcher5.Text = "Select";
             this.btnArcher5.UseVisualStyleBackColor = true;
+            this.btnArcher5.Visible = false;
+            this.btnArcher5.Click += new System.EventHandler(this.btnClick);
             // 
             // lblArcher6
             // 
@@ -172,6 +187,7 @@
             this.lblArcher6.TabIndex = 17;
             this.lblArcher6.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
             this.lblArcher6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblArcher6.Visible = false;
             // 
             // btnArcher6
             // 
@@ -181,6 +197,8 @@
             this.btnArcher6.TabIndex = 18;
             this.btnArcher6.Text = "Select";
             this.btnArcher6.UseVisualStyleBackColor = true;
+            this.btnArcher6.Visible = false;
+            this.btnArcher6.Click += new System.EventHandler(this.btnClick);
             // 
             // lblArcher7
             // 
@@ -192,6 +210,7 @@
             this.lblArcher7.TabIndex = 19;
             this.lblArcher7.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
             this.lblArcher7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblArcher7.Visible = false;
             // 
             // btnArcher7
             // 
@@ -201,6 +220,8 @@
             this.btnArcher7.TabIndex = 20;
             this.btnArcher7.Text = "Select";
             this.btnArcher7.UseVisualStyleBackColor = true;
+            this.btnArcher7.Visible = false;
+            this.btnArcher7.Click += new System.EventHandler(this.btnClick);
             // 
             // lblArcher8
             // 
@@ -212,6 +233,7 @@
             this.lblArcher8.TabIndex = 21;
             this.lblArcher8.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
             this.lblArcher8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblArcher8.Visible = false;
             // 
             // btnArcher8
             // 
@@ -221,6 +243,8 @@
             this.btnArcher8.TabIndex = 22;
             this.btnArcher8.Text = "Select";
             this.btnArcher8.UseVisualStyleBackColor = true;
+            this.btnArcher8.Visible = false;
+            this.btnArcher8.Click += new System.EventHandler(this.btnClick);
             // 
             // lblArcher9
             // 
@@ -232,6 +256,7 @@
             this.lblArcher9.TabIndex = 23;
             this.lblArcher9.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
             this.lblArcher9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblArcher9.Visible = false;
             // 
             // btnArcher9
             // 
@@ -241,6 +266,8 @@
             this.btnArcher9.TabIndex = 24;
             this.btnArcher9.Text = "Select";
             this.btnArcher9.UseVisualStyleBackColor = true;
+            this.btnArcher9.Visible = false;
+            this.btnArcher9.Click += new System.EventHandler(this.btnClick);
             // 
             // lblArcher10
             // 
@@ -252,6 +279,7 @@
             this.lblArcher10.TabIndex = 25;
             this.lblArcher10.Text = "Archer Name\r\nGender\r\nSchool\r\nGrade";
             this.lblArcher10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblArcher10.Visible = false;
             // 
             // btnArcher10
             // 
@@ -261,6 +289,8 @@
             this.btnArcher10.TabIndex = 26;
             this.btnArcher10.Text = "Select";
             this.btnArcher10.UseVisualStyleBackColor = true;
+            this.btnArcher10.Visible = false;
+            this.btnArcher10.Click += new System.EventHandler(this.btnClick);
             // 
             // Form2
             // 

@@ -25,14 +25,12 @@ namespace NASPspreadsheetGenerator
 
         List<Label> labels = new List<Label>();
         List<Button> buttons = new List<Button>();
-        
+        public string final = null;
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void assignValues()
         {
-            names.Clear();
-            labels.Clear();
             buttons.Clear();
-
+            labels.Clear();
             labels.Add(lblArcher1);
             labels.Add(lblArcher2);
             labels.Add(lblArcher3);
@@ -54,21 +52,25 @@ namespace NASPspreadsheetGenerator
             buttons.Add(btnArcher8);
             buttons.Add(btnArcher9);
             buttons.Add(btnArcher10);
+        }    
 
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            assignValues();
+            for (int i =0; i < names.Count; i++)
+            {
+                labels[i].Visible = true;
+                labels[i].Text = $"{names[i]}\n{gender[i]}\n{grade[i]}\n{school[i]}";
+                buttons[i].Visible = true;
+                buttons[i].Tag = key[i];
+            }
+        }
 
-            
-                for (int i = 0; i < (names.Count-1); i++)
-                {
-                    labels[i].Text = $"{names[i]}\n{gender[i]}\n{school[i]}\n{grade[i]}";
-                    buttons[i].Tag = key[i];
-                }
-
-                for (int i = names.Count; i < labels.Count; i++)
-                {
-                    labels[i].Hide();
-                    buttons[i].Hide();
-                }
-            
+        private void btnClick(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            final = btn.Tag.ToString();
+            this.Close();
         }
     }
 }

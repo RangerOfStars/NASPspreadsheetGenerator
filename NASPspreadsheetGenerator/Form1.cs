@@ -29,12 +29,20 @@ namespace NASPspreadsheetGenerator
         IDictionary<string, List<string>> archerData = new Dictionary<string, List<string>>();
         IDictionary<string, List<string>> schoolData = new Dictionary<string, List<string>>();
         List<string> archerAlphabeticalNames = new List<string>();
+
         Form2 archerSelect = new Form2();
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
             cboFilter.SelectedIndex = 0;
+            archerSelect.FormClosed += new FormClosedEventHandler(frm_FormClosed);
+            
+        }
+
+        void frm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MessageBox.Show(archerSelect.final);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -266,6 +274,12 @@ namespace NASPspreadsheetGenerator
             }
         }
 
+        //public List<string> key = new List<string>();
+        //public List<string> names = new List<string>();
+        //public List<string> gender = new List<string>();
+        //public List<string> school = new List<string>();
+        //public List<string> grade = new List<string>();
+
         private void lstPrimary_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboFilter.SelectedIndex == 0)
@@ -282,7 +296,6 @@ namespace NASPspreadsheetGenerator
 
                 if (temporarystorage.Count > 1)
                 {
-                    archerSelect.ShowDialog();
                     for (int i = 0; i < temporarystorage.Count; i++)
                     {
                         /*tournament name, school name, archer name("Graham Jones"), archer history ID,
@@ -297,7 +310,9 @@ namespace NASPspreadsheetGenerator
                         archerSelect.gender.Add(archerData[temporarystorage[i]][5]);
                         archerSelect.school.Add(archerData[temporarystorage[i]][1]);
                         archerSelect.grade.Add(archerData[temporarystorage[i]][4]);
+                        
                     }
+                    archerSelect.ShowDialog(this);
                 }
                 temporarystorage.Clear();
             }

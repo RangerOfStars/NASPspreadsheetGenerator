@@ -78,7 +78,6 @@ namespace NASPspreadsheetGenerator
         {
             Button btn = sender as Button;
             final = btn.Tag.ToString();
-            MessageBox.Show(final);
             this.Close();
         }
 

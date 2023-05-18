@@ -32,7 +32,7 @@ namespace NASPspreadsheetGenerator
         List<string> archerAlphabeticalNames = new List<string>();
 
         Form2 archerSelect = new Form2();
-        string key = null;
+        
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -49,7 +49,7 @@ namespace NASPspreadsheetGenerator
             archerSelect.names.Clear();
             archerSelect.grade.Clear();
             archerSelect.school.Clear();
-            key = archerSelect.final;
+            changeItemShowing(archerSelect.final);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -82,17 +82,18 @@ namespace NASPspreadsheetGenerator
                      *Arrow 24, Arrow 25, Arrow 26, Arrow 27, Arrow 28, Arrow 29, Arrow 30
                      */
                     List<string> temp = new List<string>();
-                    string tournamentName = values[0];
-                    string schoolName = values[1];
+                    Regex rgx = new Regex("[^a-zA-Z0-9 -]");
+                    string tournamentName = rgx.Replace(values[0],"");
+                    TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+                    string schoolName = textInfo.ToTitleCase(values[1].ToLower());
 
                     #region Archer Name Setup
-                    TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
-                    string archerFullName = textInfo.ToTitleCase(values[2]);
+                    
+                    string archerFullName = textInfo.ToTitleCase(values[2].ToLower());
                     
                     var nameHold = archerFullName.Split(' ');
 
                     string archerLastName = nameHold[1];
-                    Regex rgx = new Regex("[^a-zA-Z0-9 -]");
                     archerLastName = rgx.Replace(archerLastName, "");
 
                     string archerFirstName = nameHold[0];
@@ -281,16 +282,20 @@ namespace NASPspreadsheetGenerator
                 }
             }
         }
-
-        //public List<string> key = new List<string>();
-        //public List<string> names = new List<string>();
-        //public List<string> gender = new List<string>();
-        //public List<string> school = new List<string>();
-        //public List<string> grade = new List<string>();
-
+        /*tournament name, school name, archer name("Graham Jones"), archer history ID,
+         *grade, gender, state, country, end date, range type, division type (school only not gender),
+                        *rank (gender and divison, ex. High School Boys), score, 10s, 9s, 8s, 7s, Arrow 1, Arrow 2, Arrow 3,
+                        *Arrow 4, Arrow 5, Arrow 6, Arrow 7, Arrow 8, Arrow 9, Arrow 10, Arrow 11, Arrow 12, Arrow 13,
+                        *Arrow 14, Arrow 15, Arrow 16, Arrow 17, Arrow 18, Arrow 19, Arrow 20, Arrow 21, Arrow 22, Arrow 23,
+                        *Arrow 24, Arrow 25, Arrow 26, Arrow 27, Arrow 28, Arrow 29, Arrow 30
+                        */
         private void changeItemShowing(string key)
         {
-
+            if (key != null)
+            {
+                List<string> selectedArcher = archerData[key];
+                lblArcher.Text = $"Tournament Name: {selectedArcher[0]}\nSelected Archer: {selectedArcher[2]}\nSchool: {selectedArcher[1]}\nGrade: {selectedArcher[4]}\nGender: {selectedArcher[5]}\n";
+            }
         }
 
         private void lstPrimary_Click(object sender, EventArgs e)
@@ -326,6 +331,10 @@ namespace NASPspreadsheetGenerator
                         
                     }
                     archerSelect.ShowDialog(this);
+                }
+                else
+                {
+                    changeItemShowing(temporarystorage[0]);
                 }
                 temporarystorage.Clear();
             }

@@ -60,7 +60,15 @@ namespace NASPspreadsheetGenerator
             for (int i =0; i < names.Count; i++)
             {
                 labels[i].Visible = true;
-                labels[i].Text = $"{names[i]}\n{gender[i]}\n{grade[i]}\n{school[i]}";
+                string schoolTemp = school[i];
+                string[] strSplit = schoolTemp.Split();
+                string schoolAbbreviation = null;
+                foreach (string res in strSplit)
+                {
+                    schoolAbbreviation += res.Substring(0,1);
+                }
+                labels[i].Text = $"{names[i]}\nGender: {gender[i]}\nGrade: {grade[i]}\nSchool: {schoolAbbreviation}";
+                labels[i].Tag = school[i];
                 buttons[i].Visible = true;
                 buttons[i].Tag = key[i];
             }
@@ -70,7 +78,14 @@ namespace NASPspreadsheetGenerator
         {
             Button btn = sender as Button;
             final = btn.Tag.ToString();
+            MessageBox.Show(final);
             this.Close();
+        }
+
+        private void lblArcher1_MouseMove(object sender, MouseEventArgs e)
+        {
+            Label lbl = sender as Label;
+            ttpSchool.SetToolTip(lbl, lbl.Tag.ToString());
         }
     }
 }

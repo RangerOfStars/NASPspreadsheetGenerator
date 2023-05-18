@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,7 @@ namespace NASPspreadsheetGenerator
         List<string> archerAlphabeticalNames = new List<string>();
 
         Form2 archerSelect = new Form2();
+        string key = null;
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,8 +43,13 @@ namespace NASPspreadsheetGenerator
         }
 
         void frm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            MessageBox.Show(archerSelect.final);
+        { 
+            archerSelect.key.Clear();
+            archerSelect.gender.Clear();
+            archerSelect.names.Clear();
+            archerSelect.grade.Clear();
+            archerSelect.school.Clear();
+            key = archerSelect.final;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -79,7 +86,8 @@ namespace NASPspreadsheetGenerator
                     string schoolName = values[1];
 
                     #region Archer Name Setup
-                    string archerFullName = values[2];
+                    TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+                    string archerFullName = textInfo.ToTitleCase(values[2]);
                     
                     var nameHold = archerFullName.Split(' ');
 
@@ -280,7 +288,12 @@ namespace NASPspreadsheetGenerator
         //public List<string> school = new List<string>();
         //public List<string> grade = new List<string>();
 
-        private void lstPrimary_SelectedIndexChanged(object sender, EventArgs e)
+        private void changeItemShowing(string key)
+        {
+
+        }
+
+        private void lstPrimary_Click(object sender, EventArgs e)
         {
             if (cboFilter.SelectedIndex == 0)
             {
@@ -317,5 +330,7 @@ namespace NASPspreadsheetGenerator
                 temporarystorage.Clear();
             }
         }
+
+
     }
 }

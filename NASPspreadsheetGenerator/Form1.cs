@@ -66,7 +66,10 @@ namespace NASPspreadsheetGenerator
         {
             archerData.Clear();
             schoolData.Clear();
-
+            archerAlphabeticalNames.Clear();
+            List<int> elementary = new List<int>() { 4, 5 };
+            List<int> middle = new List<int>() { 6, 7, 8 };
+            List<int> high = new List<int>() { 9, 10, 11, 12 };
             var lines = File.ReadAllLines(fileName);
             int k = 0;
             foreach (var line in lines)
@@ -117,6 +120,23 @@ namespace NASPspreadsheetGenerator
                     int nines = Convert.ToInt32(values[14]);
                     int eights = Convert.ToInt32(values[15]);
                     int sevens = Convert.ToInt32(values[16]);
+
+                    string div = null;
+
+                    //need to fix
+                    if (gender == "M" && elementary.Contains(Convert.ToInt32(grade)) ){
+                        div = "Elementary School Boy";
+                    } else if (gender == "F" && middle.Contains(Convert.ToInt32(grade))){
+                        div = "Elementary School Girl";
+                    } else if (gender == "M" && high.Contains(Convert.ToInt32(grade))){
+                        div = "Middle School Boy";
+                    } else if (gender == "F" && elementary.Contains(Convert.ToInt32(grade))){
+                        div = "Middle School Girl";
+                    } else if (gender == "M" && middle.Contains(Convert.ToInt32(grade))){
+                        div = "High School Boy";
+                    } else if (gender == "F" && high.Contains(Convert.ToInt32(grade))){
+                        div = "High School Girl";
+                    }
 
                     var schoolKeys = schoolData.Keys.ToArray();
                     foreach (var school in schoolKeys)
@@ -209,6 +229,7 @@ namespace NASPspreadsheetGenerator
                     temp.Add(gender);
                     temp.Add(state);
                     temp.Add(country);
+                    temp.Add(div);
                     temp.Add(endDate);
                     temp.Add(rangeType);
                     temp.Add(division);
@@ -294,52 +315,53 @@ namespace NASPspreadsheetGenerator
             if (key != null)
             {
                 List<string> selectedArcher = archerData[key];
-                lblArcher.Text = $"Tournament Name: {selectedArcher[0]}\nSelected Archer: {selectedArcher[2]}\nSchool: {selectedArcher[1]}\nGrade: {selectedArcher[4]}\nGender: {selectedArcher[5]}\n";
+                lblArcher.Text = $"Tournament Name: {selectedArcher[0]}\nSelected Archer: {selectedArcher[2]}\nSchool: {selectedArcher[1]}\nGrade: {selectedArcher[4]}\nGender: {selectedArcher[5]}\nDivision: {selectedArcher[8]}";
             }
         }
 
         private void lstPrimary_Click(object sender, EventArgs e)
         {
-            if (cboFilter.SelectedIndex == 0)
+            if (lstPrimary.SelectedItem.ToString() != "")
             {
-                var arrayOfAllKeys = archerData.Keys.ToArray();
-                List<string> temporarystorage = new List<string>();
-                foreach (string key in arrayOfAllKeys)
+                if (cboFilter.SelectedIndex == 0)
                 {
-                    if (key.Contains(lstPrimary.SelectedItem.ToString()))
+                    var arrayOfAllKeys = archerData.Keys.ToArray();
+                    List<string> temporarystorage = new List<string>();
+                    foreach (string key in arrayOfAllKeys)
                     {
-                        temporarystorage.Add(key);
+                        if (key.Contains(lstPrimary.SelectedItem.ToString()))
+                        {
+                            temporarystorage.Add(key);
+                        }
                     }
-                }
 
-                if (temporarystorage.Count > 1)
-                {
-                    for (int i = 0; i < temporarystorage.Count; i++)
+                    if (temporarystorage.Count > 1)
                     {
-                        /*tournament name, school name, archer name("Graham Jones"), archer history ID,
-                        *grade, gender, state, country, end date, range type, division type (school only not gender),
-                        *rank (gender and divison, ex. High School Boys), score, 10s, 9s, 8s, 7s, Arrow 1, Arrow 2, Arrow 3,
-                        *Arrow 4, Arrow 5, Arrow 6, Arrow 7, Arrow 8, Arrow 9, Arrow 10, Arrow 11, Arrow 12, Arrow 13,
-                        *Arrow 14, Arrow 15, Arrow 16, Arrow 17, Arrow 18, Arrow 19, Arrow 20, Arrow 21, Arrow 22, Arrow 23,
-                        *Arrow 24, Arrow 25, Arrow 26, Arrow 27, Arrow 28, Arrow 29, Arrow 30
-                        */
-                        archerSelect.key.Add(temporarystorage[i]);
-                        archerSelect.names.Add(archerData[temporarystorage[i]][2]);
-                        archerSelect.gender.Add(archerData[temporarystorage[i]][5]);
-                        archerSelect.school.Add(archerData[temporarystorage[i]][1]);
-                        archerSelect.grade.Add(archerData[temporarystorage[i]][4]);
-                        
+                        for (int i = 0; i < temporarystorage.Count; i++)
+                        {
+                            /*tournament name, school name, archer name("Graham Jones"), archer history ID,
+                            *grade, gender, state, country, end date, range type, division type (school only not gender),
+                            *rank (gender and divison, ex. High School Boys), score, 10s, 9s, 8s, 7s, Arrow 1, Arrow 2, Arrow 3,
+                            *Arrow 4, Arrow 5, Arrow 6, Arrow 7, Arrow 8, Arrow 9, Arrow 10, Arrow 11, Arrow 12, Arrow 13,
+                            *Arrow 14, Arrow 15, Arrow 16, Arrow 17, Arrow 18, Arrow 19, Arrow 20, Arrow 21, Arrow 22, Arrow 23,
+                            *Arrow 24, Arrow 25, Arrow 26, Arrow 27, Arrow 28, Arrow 29, Arrow 30
+                            */
+                            archerSelect.key.Add(temporarystorage[i]);
+                            archerSelect.names.Add(archerData[temporarystorage[i]][2]);
+                            archerSelect.gender.Add(archerData[temporarystorage[i]][5]);
+                            archerSelect.school.Add(archerData[temporarystorage[i]][1]);
+                            archerSelect.grade.Add(archerData[temporarystorage[i]][4]);
+
+                        }
+                        archerSelect.ShowDialog(this);
                     }
-                    archerSelect.ShowDialog(this);
+                    else
+                    {
+                        changeItemShowing(temporarystorage[0]);
+                    }
+                    temporarystorage.Clear();
                 }
-                else
-                {
-                    changeItemShowing(temporarystorage[0]);
-                }
-                temporarystorage.Clear();
             }
         }
-
-
     }
 }

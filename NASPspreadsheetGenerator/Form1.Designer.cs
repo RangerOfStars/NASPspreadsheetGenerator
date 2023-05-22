@@ -60,6 +60,7 @@
             this.cboFilter.Size = new System.Drawing.Size(145, 21);
             this.cboFilter.TabIndex = 1;
             this.cboFilter.TabStop = false;
+            this.cboFilter.SelectedIndexChanged += new System.EventHandler(this.cboFilter_SelectedIndexChanged);
             // 
             // lstPrimary
             // 
@@ -107,6 +108,7 @@
             this.lstSecondary.Location = new System.Drawing.Point(333, 58);
             this.lstSecondary.Name = "lstSecondary";
             this.lstSecondary.Size = new System.Drawing.Size(234, 355);
+            this.lstSecondary.Sorted = true;
             this.lstSecondary.TabIndex = 6;
             this.lstSecondary.Visible = false;
             // 
@@ -118,7 +120,7 @@
             // 
             this.lblArcher.AutoSize = true;
             this.lblArcher.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArcher.Location = new System.Drawing.Point(620, 58);
+            this.lblArcher.Location = new System.Drawing.Point(617, 12);
             this.lblArcher.Name = "lblArcher";
             this.lblArcher.Size = new System.Drawing.Size(0, 18);
             this.lblArcher.TabIndex = 7;
@@ -136,6 +138,7 @@
             this.Controls.Add(this.lstPrimary);
             this.Controls.Add(this.cboFilter);
             this.Controls.Add(this.txtPrimary);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "NASP Tournament Generator";
             this.Load += new System.EventHandler(this.Form1_Load);

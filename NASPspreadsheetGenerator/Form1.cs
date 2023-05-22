@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Xml;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 
 namespace NASPspreadsheetGenerator
@@ -30,6 +31,7 @@ namespace NASPspreadsheetGenerator
         IDictionary<string, List<string>> archerData = new Dictionary<string, List<string>>();
         IDictionary<string, List<string>> schoolData = new Dictionary<string, List<string>>();
         List<string> archerAlphabeticalNames = new List<string>();
+        List<string> schools = new List<string>();
 
         Form2 archerSelect = new Form2();
         
@@ -89,6 +91,7 @@ namespace NASPspreadsheetGenerator
                     string tournamentName = rgx.Replace(values[0],"");
                     TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
                     string schoolName = textInfo.ToTitleCase(values[1].ToLower());
+                    schools.Add(schoolName);
 
                     #region Archer Name Setup
                     
@@ -126,28 +129,28 @@ namespace NASPspreadsheetGenerator
                     //need to fix
                     if (gender == "M" && elementary.Contains(Convert.ToInt32(grade)) ){
                         div = "Elementary School Boy";
-                    } else if (gender == "F" && middle.Contains(Convert.ToInt32(grade))){
-                        div = "Elementary School Girl";
-                    } else if (gender == "M" && high.Contains(Convert.ToInt32(grade))){
-                        div = "Middle School Boy";
                     } else if (gender == "F" && elementary.Contains(Convert.ToInt32(grade))){
-                        div = "Middle School Girl";
+                        div = "Elementary School Girl";
                     } else if (gender == "M" && middle.Contains(Convert.ToInt32(grade))){
+                        div = "Middle School Boy";
+                    } else if (gender == "F" && middle.Contains(Convert.ToInt32(grade))){
+                        div = "Middle School Girl";
+                    } else if (gender == "M" && high.Contains(Convert.ToInt32(grade))){
                         div = "High School Boy";
                     } else if (gender == "F" && high.Contains(Convert.ToInt32(grade))){
                         div = "High School Girl";
                     }
 
-                    var schoolKeys = schoolData.Keys.ToArray();
-                    foreach (var school in schoolKeys)
-                    {
-                        if (!schoolData.ContainsKey(school))
-                        {
-                            //add
-                            schoolData.Add(school, new List<string>());
-                        }
-                        schoolData[school].Add(alphabetizedArcherName);
-                    }
+                    //var schoolKeys = schoolData.Keys.ToArray();
+                    //foreach (var school in schoolKeys)
+                    //{
+                    //    if (!schoolData.ContainsKey(school))
+                    //    {
+                    //        //add
+                    //        schoolData.Add(school, new List<string>());
+                    //    }
+                    //    schoolData[school].Add(alphabetizedArcherName);
+                    //}
 
                     #region arrows
                     int arrow1 = Convert.ToInt32(values[17]);
@@ -247,6 +250,7 @@ namespace NASPspreadsheetGenerator
                     temp.Add(round6.ToString());
                     temp.Add(tenMeter50s.ToString());
                     temp.Add(fifteenMeter50s.ToString());
+                    temp.Add(alphabetizedArcherName);
                     archerData.Add(key, temp);
                     //key = "Jones, Graham (1234567)"
                     //MAJOR ISSUE WITH DUPLICATE ARCHER NAMES, NEED TO FIND A SOLUTION
@@ -267,6 +271,8 @@ namespace NASPspreadsheetGenerator
             if (cboFilter.SelectedIndex == 0) //student setup
             {
                 lstPrimary.Items.Clear();
+                lstPrimary.Sorted = true;
+                lstSecondary.Items.Clear();
                 foreach (string i in archerAlphabeticalNames)
                 {
                     if (!lstPrimary.Items.Contains(i))
@@ -285,6 +291,41 @@ namespace NASPspreadsheetGenerator
                     }
                 }
                 
+            } else if (cboFilter.SelectedIndex == 1)
+            {
+                lstPrimary.Items.Clear();
+                lstPrimary.Sorted = true;
+                lstSecondary.Items.Clear();
+                foreach (string i in schools)
+                {
+                    if (!lstPrimary.Items.Contains(i))
+                    {
+                        lstPrimary.Items.Add(i);
+                    }
+                }
+
+                string input = txtPrimary.Text;
+                lstPrimary.Items.Clear();
+                foreach (string name in schools)
+                {
+                    if (name.ToLowerInvariant().Contains(input.ToLowerInvariant()) && !lstPrimary.Items.Contains(name))
+                    {
+                        lstPrimary.Items.Add(name);
+                    }
+                }
+            }
+            else
+            {
+                lstPrimary.Items.Clear();
+                lstSecondary.Items.Clear();
+                lstPrimary.Sorted = false;
+
+                lstPrimary.Items.Add("Elementary School Girls");
+                lstPrimary.Items.Add("Elementary School Boys");
+                lstPrimary.Items.Add("Middle School Girls");
+                lstPrimary.Items.Add("Middle School Boys");
+                lstPrimary.Items.Add("High School Girls");
+                lstPrimary.Items.Add("High School Boys");
             }
         }
 
@@ -301,6 +342,17 @@ namespace NASPspreadsheetGenerator
                         lstPrimary.Items.Add(name);
                     }
                 }
+            } else if (cboFilter.SelectedIndex == 1)
+            {
+                string input = txtPrimary.Text;
+                lstPrimary.Items.Clear();
+                foreach (string name in schools)
+                {
+                    if (name.ToLowerInvariant().Contains(input.ToLowerInvariant()) && !lstPrimary.Items.Contains(name))
+                    {
+                        lstPrimary.Items.Add(name);
+                    }
+                }
             }
         }
         /*tournament name, school name, archer name("Graham Jones"), archer history ID,
@@ -310,18 +362,45 @@ namespace NASPspreadsheetGenerator
                         *Arrow 14, Arrow 15, Arrow 16, Arrow 17, Arrow 18, Arrow 19, Arrow 20, Arrow 21, Arrow 22, Arrow 23,
                         *Arrow 24, Arrow 25, Arrow 26, Arrow 27, Arrow 28, Arrow 29, Arrow 30
                         */
+
         private void changeItemShowing(string key)
         {
             if (key != null)
             {
                 List<string> selectedArcher = archerData[key];
-                lblArcher.Text = $"Tournament Name: {selectedArcher[0]}\nSelected Archer: {selectedArcher[2]}\nSchool: {selectedArcher[1]}\nGrade: {selectedArcher[4]}\nGender: {selectedArcher[5]}\nDivision: {selectedArcher[8]}";
+                lblArcher.Text = $"Tournament Name: {selectedArcher[0]}\nSelected Archer: {selectedArcher[2]}\nSchool: {selectedArcher[1]}\nGrade: {selectedArcher[4]}\nGender: {selectedArcher[5]}\nDivision: {selectedArcher[8]}" +
+                    $"\nScore: {selectedArcher[13]} ({selectedArcher[14]} tens)\nDivision Ranking: {AddOrdinal(Convert.ToInt16(selectedArcher[12]))}";
+            }
+        }
+
+        public static string AddOrdinal(int num)
+        {
+            if (num <= 0) return num.ToString();
+
+            switch (num % 100)
+            {
+                case 11:
+                case 12:
+                case 13:
+                    return num + "th";
+            }
+
+            switch (num % 10)
+            {
+                case 1:
+                    return num + "st";
+                case 2:
+                    return num + "nd";
+                case 3:
+                    return num + "rd";
+                default:
+                    return num + "th";
             }
         }
 
         private void lstPrimary_Click(object sender, EventArgs e)
         {
-            if (lstPrimary.SelectedItem.ToString() != "")
+            if (lstPrimary.SelectedItem != null)
             {
                 if (cboFilter.SelectedIndex == 0)
                 {
@@ -360,7 +439,32 @@ namespace NASPspreadsheetGenerator
                         changeItemShowing(temporarystorage[0]);
                     }
                     temporarystorage.Clear();
+                } else if (cboFilter.SelectedIndex == 1)
+                {
+                    lstSecondary.Items.Clear();
+                    var tempNames = archerData.Keys.ToArray();
+                    foreach (string i in tempNames)
+                    {
+                        
+                        if ((lstPrimary.SelectedItem.ToString() == archerData[i.ToString()][1]) && !lstSecondary.Items.Contains(archerData[i][26]))
+                        {
+                            lstSecondary.Items.Add(archerData[i][26]);
+                        }
+                    }
                 }
+            }
+        }
+
+        private void cboFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ListBoxSetup();
+            if (cboFilter.SelectedIndex == 1 || cboFilter.SelectedIndex == 2)
+            {
+                lstSecondary.Show();
+            }
+            else
+            {
+                lstSecondary.Hide();
             }
         }
     }

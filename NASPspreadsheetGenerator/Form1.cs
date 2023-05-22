@@ -96,20 +96,37 @@ namespace NASPspreadsheetGenerator
                     #region Archer Name Setup
                     
                     string archerFullName = textInfo.ToTitleCase(values[2].ToLower());
-                    
-                    var nameHold = archerFullName.Split(' ');
 
-                    string archerLastName = nameHold[1];
-                    archerLastName = rgx.Replace(archerLastName, "");
+                    int countSpaces = archerFullName.Count(Char.IsWhiteSpace); // 6
+                    int countWords = archerFullName.Split().Length; // 7
+                    string archerHistoryID = values[3];
+                    string key = null;
+                    string tempName = null;
 
-                    string archerFirstName = nameHold[0];
-                    archerFirstName = rgx.Replace(archerFirstName, "");
+                    if (countWords == 2)
+                    {
+                        var nameHold = archerFullName.Split(' ');
 
-                    string alphabetizedArcherName = $"{archerLastName}, {archerFirstName}";
-                    archerAlphabeticalNames.Add(alphabetizedArcherName);
+                        string archerLastName = nameHold[1];
+                        archerLastName = rgx.Replace(archerLastName, "");
+
+                        string archerFirstName = nameHold[0];
+                        archerFirstName = rgx.Replace(archerFirstName, "");
+
+                        string alphabetizedArcherName = $"{archerLastName}, {archerFirstName}";
+                        archerAlphabeticalNames.Add(alphabetizedArcherName);
+                        tempName = alphabetizedArcherName;
+                        key = $"{alphabetizedArcherName} ({archerHistoryID})";
+                    }
+                    else
+                    {
+                        tempName = archerFullName;
+                        archerAlphabeticalNames.Add(archerFullName);
+                        key = $"{archerFullName} ({archerHistoryID})";
+                    }
                     #endregion
 
-                    string archerHistoryID = values[3];
+                    
                     string grade = values[4];
                     string gender = values[5];
                     string state = values[6];
@@ -174,15 +191,15 @@ namespace NASPspreadsheetGenerator
                     int arrow19 = Convert.ToInt32(values[35]);
                     int arrow20 = Convert.ToInt32(values[36]);
                     int arrow21 = Convert.ToInt32(values[37]);
-                    int arrow22 = Convert.ToInt32(values[37]);
-                    int arrow23 = Convert.ToInt32(values[38]);
-                    int arrow24 = Convert.ToInt32(values[39]);
-                    int arrow25 = Convert.ToInt32(values[40]);
-                    int arrow26 = Convert.ToInt32(values[41]);
-                    int arrow27 = Convert.ToInt32(values[41]);
-                    int arrow28 = Convert.ToInt32(values[42]);
-                    int arrow29 = Convert.ToInt32(values[43]);
-                    int arrow30 = Convert.ToInt32(values[44]);
+                    int arrow22 = Convert.ToInt32(values[38]);
+                    int arrow23 = Convert.ToInt32(values[39]);
+                    int arrow24 = Convert.ToInt32(values[40]);
+                    int arrow25 = Convert.ToInt32(values[41]);
+                    int arrow26 = Convert.ToInt32(values[42]);
+                    int arrow27 = Convert.ToInt32(values[43]);
+                    int arrow28 = Convert.ToInt32(values[44]);
+                    int arrow29 = Convert.ToInt32(values[45]);
+                    int arrow30 = Convert.ToInt32(values[46]);
                     #endregion
 
                     #region Round Scores
@@ -222,35 +239,36 @@ namespace NASPspreadsheetGenerator
                     #endregion
 
                     #region Archer Data Setup
-                    string key = $"{alphabetizedArcherName} ({archerHistoryID})";
+                    
 
-                    temp.Add(tournamentName);
-                    temp.Add(schoolName);
-                    temp.Add(archerFullName);
-                    temp.Add(archerHistoryID);
-                    temp.Add(grade);
-                    temp.Add(gender);
-                    temp.Add(state);
-                    temp.Add(country);
-                    temp.Add(div);
-                    temp.Add(endDate);
-                    temp.Add(rangeType);
-                    temp.Add(division);
-                    temp.Add(rank);
-                    temp.Add(score.ToString());
-                    temp.Add(tens.ToString());
-                    temp.Add(nines.ToString());
-                    temp.Add(eights.ToString());
-                    temp.Add(sevens.ToString());
-                    temp.Add(round1.ToString());
-                    temp.Add(round2.ToString());
-                    temp.Add(round3.ToString());
-                    temp.Add(round4.ToString());
-                    temp.Add(round5.ToString());
-                    temp.Add(round6.ToString());
-                    temp.Add(tenMeter50s.ToString());
-                    temp.Add(fifteenMeter50s.ToString());
-                    temp.Add(alphabetizedArcherName);
+                    temp.Add(tournamentName);//0
+                    temp.Add(schoolName);//1
+                    temp.Add(archerFullName);//2
+                    temp.Add(archerHistoryID);//3
+                    temp.Add(grade);//4
+                    temp.Add(gender);//5
+                    temp.Add(state);//6
+                    temp.Add(country);//7
+                    temp.Add(div);//8
+                    temp.Add(endDate);//9
+                    temp.Add(rangeType);//10
+                    temp.Add(division);//11
+                    temp.Add(rank);//12
+                    temp.Add(score.ToString());//13
+                    temp.Add(tens.ToString());//14
+                    temp.Add(nines.ToString());//15
+                    temp.Add(eights.ToString());//16
+                    temp.Add(sevens.ToString());//17
+                    temp.Add(round1.ToString());//18
+                    temp.Add(round2.ToString());//19
+                    temp.Add(round3.ToString());//20
+                    temp.Add(round4.ToString());//21
+                    temp.Add(round5.ToString());//22
+                    temp.Add(round6.ToString());//23
+                    temp.Add(tenMeter50s.ToString());//24
+                    temp.Add(fifteenMeter50s.ToString());//25
+                    temp.Add(tempName);//26
+
                     archerData.Add(key, temp);
                     //key = "Jones, Graham (1234567)"
                     //MAJOR ISSUE WITH DUPLICATE ARCHER NAMES, NEED TO FIND A SOLUTION
@@ -369,7 +387,8 @@ namespace NASPspreadsheetGenerator
             {
                 List<string> selectedArcher = archerData[key];
                 lblArcher.Text = $"Tournament Name: {selectedArcher[0]}\nSelected Archer: {selectedArcher[2]}\nSchool: {selectedArcher[1]}\nGrade: {selectedArcher[4]}\nGender: {selectedArcher[5]}\nDivision: {selectedArcher[8]}" +
-                    $"\nScore: {selectedArcher[13]} ({selectedArcher[14]} tens)\nDivision Ranking: {AddOrdinal(Convert.ToInt16(selectedArcher[12]))}";
+                    $"\nScore: {selectedArcher[13]} ({selectedArcher[14]} tens)\nDivision Ranking: {AddOrdinal(Convert.ToInt16(selectedArcher[12]))}\nRound 1: {selectedArcher[18]}\nRound 2: {selectedArcher[19]}" +
+                    $"\nRound 3: {selectedArcher[20]}\nRound 4: {selectedArcher[21]}\nRound 5: {selectedArcher[22]}\nRound 6: {selectedArcher[23]}\n10 Meter 50s: {selectedArcher[24]}\n15 Meter 50s: {selectedArcher[25]}";
             }
         }
 
@@ -452,6 +471,19 @@ namespace NASPspreadsheetGenerator
                         }
                     }
                 }
+                else
+                {
+                    lstSecondary.Items.Clear();
+                    var tempNames = archerData.Keys.ToArray();
+                    foreach (string i in tempNames)
+                    {
+
+                        if ((lstPrimary.SelectedItem.ToString()+"s").Contains(archerData[i.ToString()][8]) && !lstSecondary.Items.Contains(archerData[i][26]))
+                        {
+                            lstSecondary.Items.Add(archerData[i][26]);
+                        }
+                    }
+                }
             }
         }
 
@@ -465,6 +497,50 @@ namespace NASPspreadsheetGenerator
             else
             {
                 lstSecondary.Hide();
+            }
+        }
+
+        private void lstSecondary_Click(object sender, EventArgs e)
+        {
+            if (lstSecondary.SelectedItem != null)
+            {
+                if (cboFilter.SelectedIndex == 1)
+                {
+                    var arrayOfAllKeys = archerData.Keys.ToArray();
+                    List<string> temporarystorage = new List<string>();
+                    foreach (string key in arrayOfAllKeys)
+                    {
+                        if (key.Contains(lstSecondary.SelectedItem.ToString()) && lstPrimary.SelectedItem.ToString().Contains(archerData[key][1]))
+                        {
+                            temporarystorage.Add(key);
+                        }
+                    }
+
+                    if (temporarystorage.Count > 1)
+                    {
+                        for (int i = 0; i < temporarystorage.Count; i++)
+                        {
+                            /*tournament name, school name, archer name("Graham Jones"), archer history ID,
+                            *grade, gender, state, country, end date, range type, division type (school only not gender),
+                            *rank (gender and divison, ex. High School Boys), score, 10s, 9s, 8s, 7s, Arrow 1, Arrow 2, Arrow 3,
+                            *Arrow 4, Arrow 5, Arrow 6, Arrow 7, Arrow 8, Arrow 9, Arrow 10, Arrow 11, Arrow 12, Arrow 13,
+                            *Arrow 14, Arrow 15, Arrow 16, Arrow 17, Arrow 18, Arrow 19, Arrow 20, Arrow 21, Arrow 22, Arrow 23,
+                            *Arrow 24, Arrow 25, Arrow 26, Arrow 27, Arrow 28, Arrow 29, Arrow 30
+                            */
+                            archerSelect.key.Add(temporarystorage[i]);
+                            archerSelect.names.Add(archerData[temporarystorage[i]][2]);
+                            archerSelect.gender.Add(archerData[temporarystorage[i]][5]);
+                            archerSelect.school.Add(archerData[temporarystorage[i]][1]);
+                            archerSelect.grade.Add(archerData[temporarystorage[i]][4]);
+
+                        }
+                        archerSelect.ShowDialog(this);
+                    }
+                    else
+                    { 
+                        changeItemShowing(temporarystorage[0]);
+                    }
+                }
             }
         }
     }

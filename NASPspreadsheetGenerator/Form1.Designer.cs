@@ -41,9 +41,10 @@
             // 
             // txtPrimary
             // 
-            this.txtPrimary.Location = new System.Drawing.Point(74, 17);
+            this.txtPrimary.Location = new System.Drawing.Point(99, 21);
+            this.txtPrimary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPrimary.Name = "txtPrimary";
-            this.txtPrimary.Size = new System.Drawing.Size(234, 20);
+            this.txtPrimary.Size = new System.Drawing.Size(311, 22);
             this.txtPrimary.TabIndex = 0;
             this.txtPrimary.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -55,9 +56,10 @@
             "Name",
             "School",
             "Division"});
-            this.cboFilter.Location = new System.Drawing.Point(422, 12);
+            this.cboFilter.Location = new System.Drawing.Point(563, 15);
+            this.cboFilter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboFilter.Name = "cboFilter";
-            this.cboFilter.Size = new System.Drawing.Size(145, 21);
+            this.cboFilter.Size = new System.Drawing.Size(192, 24);
             this.cboFilter.TabIndex = 1;
             this.cboFilter.TabStop = false;
             this.cboFilter.SelectedIndexChanged += new System.EventHandler(this.cboFilter_SelectedIndexChanged);
@@ -65,9 +67,11 @@
             // lstPrimary
             // 
             this.lstPrimary.FormattingEnabled = true;
-            this.lstPrimary.Location = new System.Drawing.Point(74, 58);
+            this.lstPrimary.ItemHeight = 16;
+            this.lstPrimary.Location = new System.Drawing.Point(99, 71);
+            this.lstPrimary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstPrimary.Name = "lstPrimary";
-            this.lstPrimary.Size = new System.Drawing.Size(234, 355);
+            this.lstPrimary.Size = new System.Drawing.Size(311, 436);
             this.lstPrimary.Sorted = true;
             this.lstPrimary.TabIndex = 2;
             this.lstPrimary.Click += new System.EventHandler(this.lstPrimary_Click);
@@ -76,17 +80,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 17);
+            this.label1.Location = new System.Drawing.Point(15, 21);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 18);
+            this.label1.Size = new System.Drawing.Size(71, 24);
             this.label1.TabIndex = 3;
             this.label1.Text = "Name:";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 468);
+            this.button1.Location = new System.Drawing.Point(16, 576);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 54);
+            this.button1.Size = new System.Drawing.Size(147, 66);
             this.button1.TabIndex = 4;
             this.button1.Text = "Open Archer DataSheet";
             this.button1.UseVisualStyleBackColor = true;
@@ -96,21 +102,25 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(341, 15);
+            this.label2.Location = new System.Drawing.Point(455, 18);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 18);
+            this.label2.Size = new System.Drawing.Size(92, 24);
             this.label2.TabIndex = 5;
             this.label2.Text = "Filter By:";
             // 
             // lstSecondary
             // 
             this.lstSecondary.FormattingEnabled = true;
-            this.lstSecondary.Location = new System.Drawing.Point(333, 58);
+            this.lstSecondary.ItemHeight = 16;
+            this.lstSecondary.Location = new System.Drawing.Point(444, 71);
+            this.lstSecondary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.lstSecondary.Name = "lstSecondary";
-            this.lstSecondary.Size = new System.Drawing.Size(234, 355);
+            this.lstSecondary.Size = new System.Drawing.Size(311, 436);
             this.lstSecondary.Sorted = true;
             this.lstSecondary.TabIndex = 6;
             this.lstSecondary.Visible = false;
+            this.lstSecondary.Click += new System.EventHandler(this.lstSecondary_Click);
             // 
             // ofdOpen
             // 
@@ -120,16 +130,17 @@
             // 
             this.lblArcher.AutoSize = true;
             this.lblArcher.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArcher.Location = new System.Drawing.Point(617, 12);
+            this.lblArcher.Location = new System.Drawing.Point(823, 15);
+            this.lblArcher.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblArcher.Name = "lblArcher";
-            this.lblArcher.Size = new System.Drawing.Size(0, 18);
+            this.lblArcher.Size = new System.Drawing.Size(0, 24);
             this.lblArcher.TabIndex = 7;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1203, 534);
+            this.ClientSize = new System.Drawing.Size(1604, 657);
             this.Controls.Add(this.lblArcher);
             this.Controls.Add(this.lstSecondary);
             this.Controls.Add(this.label2);
@@ -138,6 +149,7 @@
             this.Controls.Add(this.lstPrimary);
             this.Controls.Add(this.cboFilter);
             this.Controls.Add(this.txtPrimary);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "NASP Tournament Generator";

@@ -57,7 +57,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(221, 11);
+            this.label2.Location = new System.Drawing.Point(580, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(354, 48);
@@ -82,7 +82,7 @@
             // btnArcher1
             // 
             this.btnArcher1.Location = new System.Drawing.Point(16, 182);
-            this.btnArcher1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnArcher1.Margin = new System.Windows.Forms.Padding(4);
             this.btnArcher1.Name = "btnArcher1";
             this.btnArcher1.Size = new System.Drawing.Size(141, 28);
             this.btnArcher1.TabIndex = 8;
@@ -95,7 +95,7 @@
             // 
             this.lblArcher2.AutoSize = true;
             this.lblArcher2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArcher2.Location = new System.Drawing.Point(189, 76);
+            this.lblArcher2.Location = new System.Drawing.Point(297, 76);
             this.lblArcher2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblArcher2.Name = "lblArcher2";
             this.lblArcher2.Size = new System.Drawing.Size(134, 96);
@@ -107,8 +107,8 @@
             // 
             // btnArcher2
             // 
-            this.btnArcher2.Location = new System.Drawing.Point(189, 182);
-            this.btnArcher2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnArcher2.Location = new System.Drawing.Point(297, 182);
+            this.btnArcher2.Margin = new System.Windows.Forms.Padding(4);
             this.btnArcher2.Name = "btnArcher2";
             this.btnArcher2.Size = new System.Drawing.Size(141, 28);
             this.btnArcher2.TabIndex = 10;
@@ -121,7 +121,7 @@
             // 
             this.lblArcher3.AutoSize = true;
             this.lblArcher3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArcher3.Location = new System.Drawing.Point(360, 76);
+            this.lblArcher3.Location = new System.Drawing.Point(609, 76);
             this.lblArcher3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblArcher3.Name = "lblArcher3";
             this.lblArcher3.Size = new System.Drawing.Size(134, 96);
@@ -133,8 +133,8 @@
             // 
             // btnArcher3
             // 
-            this.btnArcher3.Location = new System.Drawing.Point(360, 182);
-            this.btnArcher3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnArcher3.Location = new System.Drawing.Point(609, 182);
+            this.btnArcher3.Margin = new System.Windows.Forms.Padding(4);
             this.btnArcher3.Name = "btnArcher3";
             this.btnArcher3.Size = new System.Drawing.Size(141, 28);
             this.btnArcher3.TabIndex = 12;
@@ -147,7 +147,7 @@
             // 
             this.lblArcher4.AutoSize = true;
             this.lblArcher4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArcher4.Location = new System.Drawing.Point(528, 76);
+            this.lblArcher4.Location = new System.Drawing.Point(953, 76);
             this.lblArcher4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblArcher4.Name = "lblArcher4";
             this.lblArcher4.Size = new System.Drawing.Size(134, 96);
@@ -159,8 +159,8 @@
             // 
             // btnArcher4
             // 
-            this.btnArcher4.Location = new System.Drawing.Point(528, 182);
-            this.btnArcher4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnArcher4.Location = new System.Drawing.Point(953, 182);
+            this.btnArcher4.Margin = new System.Windows.Forms.Padding(4);
             this.btnArcher4.Name = "btnArcher4";
             this.btnArcher4.Size = new System.Drawing.Size(141, 28);
             this.btnArcher4.TabIndex = 14;
@@ -173,7 +173,7 @@
             // 
             this.lblArcher5.AutoSize = true;
             this.lblArcher5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArcher5.Location = new System.Drawing.Point(712, 76);
+            this.lblArcher5.Location = new System.Drawing.Point(1285, 76);
             this.lblArcher5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblArcher5.Name = "lblArcher5";
             this.lblArcher5.Size = new System.Drawing.Size(134, 96);
@@ -185,8 +185,8 @@
             // 
             // btnArcher5
             // 
-            this.btnArcher5.Location = new System.Drawing.Point(712, 182);
-            this.btnArcher5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnArcher5.Location = new System.Drawing.Point(1285, 182);
+            this.btnArcher5.Margin = new System.Windows.Forms.Padding(4);
             this.btnArcher5.Name = "btnArcher5";
             this.btnArcher5.Size = new System.Drawing.Size(141, 28);
             this.btnArcher5.TabIndex = 16;
@@ -212,7 +212,7 @@
             // btnArcher6
             // 
             this.btnArcher6.Location = new System.Drawing.Point(12, 352);
-            this.btnArcher6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnArcher6.Margin = new System.Windows.Forms.Padding(4);
             this.btnArcher6.Name = "btnArcher6";
             this.btnArcher6.Size = new System.Drawing.Size(141, 28);
             this.btnArcher6.TabIndex = 18;
@@ -225,7 +225,7 @@
             // 
             this.lblArcher7.AutoSize = true;
             this.lblArcher7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArcher7.Location = new System.Drawing.Point(189, 246);
+            this.lblArcher7.Location = new System.Drawing.Point(297, 246);
             this.lblArcher7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblArcher7.Name = "lblArcher7";
             this.lblArcher7.Size = new System.Drawing.Size(134, 96);
@@ -237,8 +237,8 @@
             // 
             // btnArcher7
             // 
-            this.btnArcher7.Location = new System.Drawing.Point(189, 352);
-            this.btnArcher7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnArcher7.Location = new System.Drawing.Point(297, 352);
+            this.btnArcher7.Margin = new System.Windows.Forms.Padding(4);
             this.btnArcher7.Name = "btnArcher7";
             this.btnArcher7.Size = new System.Drawing.Size(141, 28);
             this.btnArcher7.TabIndex = 20;
@@ -251,7 +251,7 @@
             // 
             this.lblArcher8.AutoSize = true;
             this.lblArcher8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArcher8.Location = new System.Drawing.Point(360, 246);
+            this.lblArcher8.Location = new System.Drawing.Point(609, 246);
             this.lblArcher8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblArcher8.Name = "lblArcher8";
             this.lblArcher8.Size = new System.Drawing.Size(134, 96);
@@ -263,8 +263,8 @@
             // 
             // btnArcher8
             // 
-            this.btnArcher8.Location = new System.Drawing.Point(360, 352);
-            this.btnArcher8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnArcher8.Location = new System.Drawing.Point(609, 352);
+            this.btnArcher8.Margin = new System.Windows.Forms.Padding(4);
             this.btnArcher8.Name = "btnArcher8";
             this.btnArcher8.Size = new System.Drawing.Size(141, 28);
             this.btnArcher8.TabIndex = 22;
@@ -277,7 +277,7 @@
             // 
             this.lblArcher9.AutoSize = true;
             this.lblArcher9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArcher9.Location = new System.Drawing.Point(528, 246);
+            this.lblArcher9.Location = new System.Drawing.Point(953, 246);
             this.lblArcher9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblArcher9.Name = "lblArcher9";
             this.lblArcher9.Size = new System.Drawing.Size(134, 96);
@@ -289,8 +289,8 @@
             // 
             // btnArcher9
             // 
-            this.btnArcher9.Location = new System.Drawing.Point(528, 352);
-            this.btnArcher9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnArcher9.Location = new System.Drawing.Point(953, 352);
+            this.btnArcher9.Margin = new System.Windows.Forms.Padding(4);
             this.btnArcher9.Name = "btnArcher9";
             this.btnArcher9.Size = new System.Drawing.Size(141, 28);
             this.btnArcher9.TabIndex = 24;
@@ -303,7 +303,7 @@
             // 
             this.lblArcher10.AutoSize = true;
             this.lblArcher10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArcher10.Location = new System.Drawing.Point(712, 246);
+            this.lblArcher10.Location = new System.Drawing.Point(1285, 246);
             this.lblArcher10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblArcher10.Name = "lblArcher10";
             this.lblArcher10.Size = new System.Drawing.Size(134, 96);
@@ -315,8 +315,8 @@
             // 
             // btnArcher10
             // 
-            this.btnArcher10.Location = new System.Drawing.Point(712, 352);
-            this.btnArcher10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnArcher10.Location = new System.Drawing.Point(1285, 352);
+            this.btnArcher10.Margin = new System.Windows.Forms.Padding(4);
             this.btnArcher10.Name = "btnArcher10";
             this.btnArcher10.Size = new System.Drawing.Size(141, 28);
             this.btnArcher10.TabIndex = 26;
@@ -333,7 +333,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(872, 398);
+            this.ClientSize = new System.Drawing.Size(1507, 398);
             this.Controls.Add(this.lblArcher10);
             this.Controls.Add(this.btnArcher10);
             this.Controls.Add(this.lblArcher9);
@@ -355,7 +355,7 @@
             this.Controls.Add(this.lblArcher1);
             this.Controls.Add(this.btnArcher1);
             this.Controls.Add(this.label2);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form2";

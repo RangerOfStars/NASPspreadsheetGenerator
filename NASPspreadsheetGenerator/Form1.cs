@@ -321,7 +321,7 @@ namespace NASPspreadsheetGenerator
                         lstPrimary.Items.Add(i);
                     }
                 }
-
+                
                 string input = txtPrimary.Text;
                 lstPrimary.Items.Clear();
                 foreach (string name in schools)
@@ -331,6 +331,7 @@ namespace NASPspreadsheetGenerator
                         lstPrimary.Items.Add(name);
                     }
                 }
+                
             }
             else
             {
@@ -385,10 +386,43 @@ namespace NASPspreadsheetGenerator
         {
             if (key != null)
             {
-                List<string> selectedArcher = archerData[key];
-                lblArcher.Text = $"Tournament Name: {selectedArcher[0]}\nSelected Archer: {selectedArcher[2]}\nSchool: {selectedArcher[1]}\nGrade: {selectedArcher[4]}\nGender: {selectedArcher[5]}\nDivision: {selectedArcher[8]}" +
-                    $"\nScore: {selectedArcher[13]} ({selectedArcher[14]} tens)\nDivision Ranking: {AddOrdinal(Convert.ToInt16(selectedArcher[12]))}\nRound 1: {selectedArcher[18]}\nRound 2: {selectedArcher[19]}" +
-                    $"\nRound 3: {selectedArcher[20]}\nRound 4: {selectedArcher[21]}\nRound 5: {selectedArcher[22]}\nRound 6: {selectedArcher[23]}\n10 Meter 50s: {selectedArcher[24]}\n15 Meter 50s: {selectedArcher[25]}";
+                if (key == "{SCHOOL DATA}")
+                {
+                    var temp = archerData.Keys.ToArray();
+                    List<string> tenMeters = new List<string>();
+                    List<string> fifteenMeters = new List<string>();
+                    foreach (string i in temp)
+                    {
+                        if (archerData[i][1].Contains(lstPrimary.SelectedItem.ToString()) && Convert.ToInt16(archerData[i][24]) > 0)
+                        {
+                            tenMeters.Add($"{archerData[i][2]}({archerData[i][24]} 10 Meter 50s)");
+                        }
+                        if (archerData[i][1].Contains(lstPrimary.SelectedItem.ToString()) && Convert.ToInt16(archerData[i][25]) > 0)
+                        {
+                            fifteenMeters.Add($"{archerData[i][2]}({archerData[i][25]} 15 Meter 50s)");
+                        }
+                    }
+
+                    string output = "Ten Meter 50s";
+
+                    foreach (string i in tenMeters)
+                    {
+                        output += i + "\n";
+                    }
+                    output += "\nFifteen Meter 50s";
+                    foreach (string i in fifteenMeters)
+                    {
+                        output += i + "\n";
+                    }
+                    lblArcher.Text = output;
+                }
+                else
+                {
+                    List<string> selectedArcher = archerData[key];
+                    lblArcher.Text = $"Tournament Name: {selectedArcher[0]}\nSelected Archer: {selectedArcher[2]}\nSchool: {selectedArcher[1]}\nGrade: {selectedArcher[4]}\nGender: {selectedArcher[5]}\nDivision: {selectedArcher[8]}" +
+                        $"\nScore: {selectedArcher[13]} ({selectedArcher[14]} tens)\nDivision Ranking: {AddOrdinal(Convert.ToInt16(selectedArcher[12]))}\nRound 1: {selectedArcher[18]}\nRound 2: {selectedArcher[19]}" +
+                        $"\nRound 3: {selectedArcher[20]}\nRound 4: {selectedArcher[21]}\nRound 5: {selectedArcher[22]}\nRound 6: {selectedArcher[23]}\n10 Meter 50s: {selectedArcher[24]}\n15 Meter 50s: {selectedArcher[25]}";
+                }
             }
         }
 
@@ -470,6 +504,7 @@ namespace NASPspreadsheetGenerator
                             lstSecondary.Items.Add(archerData[i][26]);
                         }
                     }
+                    lstSecondary.Items.Add("{SCHOOL DATA}");
                 }
                 else
                 {
@@ -502,7 +537,7 @@ namespace NASPspreadsheetGenerator
 
         private void lstSecondary_Click(object sender, EventArgs e)
         {
-            if (lstSecondary.SelectedItem != null)
+            if (lstSecondary.SelectedItem != null && lstSecondary.SelectedItem.ToString() != "{SCHOOL DATA}")
             {
                 if (cboFilter.SelectedIndex == 1)
                 {

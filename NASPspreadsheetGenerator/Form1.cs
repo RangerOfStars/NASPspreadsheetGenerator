@@ -391,28 +391,73 @@ namespace NASPspreadsheetGenerator
                     var temp = archerData.Keys.ToArray();
                     List<string> tenMeters = new List<string>();
                     List<string> fifteenMeters = new List<string>();
+                    List<string> boys = new List<string>();
+                    List<string> girls = new List<string>();
+                    string schoolDivision = null;
+                    string tournamentName = null;
+
+
                     foreach (string i in temp)
                     {
                         if (archerData[i][1].Contains(lstPrimary.SelectedItem.ToString()) && Convert.ToInt16(archerData[i][24]) > 0)
                         {
-                            tenMeters.Add($"{archerData[i][2]}({archerData[i][24]} 10 Meter 50s)");
+                            tenMeters.Add($"{archerData[i][2]} ({archerData[i][24]})");
                         }
                         if (archerData[i][1].Contains(lstPrimary.SelectedItem.ToString()) && Convert.ToInt16(archerData[i][25]) > 0)
                         {
-                            fifteenMeters.Add($"{archerData[i][2]}({archerData[i][25]} 15 Meter 50s)");
+                            fifteenMeters.Add($"{archerData[i][2]} ({archerData[i][25]})");
+                        }
+                        if (archerData[i][1].Contains(lstPrimary.SelectedItem.ToString()) && Convert.ToInt16(archerData[i][12]) <= 10)
+                        {
+                            schoolDivision = archerData[i][11];
+                            if (archerData[i][5]== "M")
+                            {
+                                boys.Add($"{AddOrdinal(Convert.ToInt16(archerData[i][12]))} place: {archerData[i][2]} {archerData[i][13]}");
+                            }
+                            else
+                            {
+                                girls.Add($"{AddOrdinal(Convert.ToInt16(archerData[i][12]))} place: {archerData[i][2]} {archerData[i][13]}");
+                            }
+                        }
+                        tournamentName = archerData[i][0];
+                    }
+
+                    string output = tournamentName + "\n";
+
+                    if (girls.Count> 0)
+                    {
+                        output += $"Top 10 {schoolDivision} Girls\n";
+                        foreach(string i in girls)
+                        {
+                            output += i + "\n";
                         }
                     }
 
-                    string output = "Ten Meter 50s";
-
-                    foreach (string i in tenMeters)
+                    if (boys.Count > 0)
                     {
-                        output += i + "\n";
+                        output += $"Top 10 {schoolDivision} Boys:\n";
+                        foreach (string i in boys)
+                        {
+                            output += i + "\n";
+                        }
                     }
-                    output += "\nFifteen Meter 50s";
-                    foreach (string i in fifteenMeters)
+
+                    if (tenMeters.Count > 0)
                     {
-                        output += i + "\n";
+                        output += "\nTen Meter 50s:\n";
+                        foreach (string i in tenMeters)
+                        {
+                            output += i + "\n";
+                        }
+                    }
+
+                    if (fifteenMeters.Count > 0)
+                    {
+                        output += "\nFifteen Meter 50s:\n";
+                        foreach (string i in fifteenMeters)
+                        {
+                            output += i + "\n";
+                        }
                     }
                     lblArcher.Text = output;
                 }
@@ -537,43 +582,50 @@ namespace NASPspreadsheetGenerator
 
         private void lstSecondary_Click(object sender, EventArgs e)
         {
-            if (lstSecondary.SelectedItem != null && lstSecondary.SelectedItem.ToString() != "{SCHOOL DATA}")
+            if (lstSecondary.SelectedItem != null)
             {
                 if (cboFilter.SelectedIndex == 1)
                 {
-                    var arrayOfAllKeys = archerData.Keys.ToArray();
-                    List<string> temporarystorage = new List<string>();
-                    foreach (string key in arrayOfAllKeys)
+                    if (lstSecondary.SelectedItem.ToString() != "{SCHOOL DATA}")
                     {
-                        if (key.Contains(lstSecondary.SelectedItem.ToString()) && lstPrimary.SelectedItem.ToString().Contains(archerData[key][1]))
+                        var arrayOfAllKeys = archerData.Keys.ToArray();
+                        List<string> temporarystorage = new List<string>();
+                        foreach (string key in arrayOfAllKeys)
                         {
-                            temporarystorage.Add(key);
+                            if (key.Contains(lstSecondary.SelectedItem.ToString()) && lstPrimary.SelectedItem.ToString().Contains(archerData[key][1]))
+                            {
+                                temporarystorage.Add(key);
+                            }
                         }
-                    }
 
-                    if (temporarystorage.Count > 1)
-                    {
-                        for (int i = 0; i < temporarystorage.Count; i++)
+                        if (temporarystorage.Count > 1)
                         {
-                            /*tournament name, school name, archer name("Graham Jones"), archer history ID,
-                            *grade, gender, state, country, end date, range type, division type (school only not gender),
-                            *rank (gender and divison, ex. High School Boys), score, 10s, 9s, 8s, 7s, Arrow 1, Arrow 2, Arrow 3,
-                            *Arrow 4, Arrow 5, Arrow 6, Arrow 7, Arrow 8, Arrow 9, Arrow 10, Arrow 11, Arrow 12, Arrow 13,
-                            *Arrow 14, Arrow 15, Arrow 16, Arrow 17, Arrow 18, Arrow 19, Arrow 20, Arrow 21, Arrow 22, Arrow 23,
-                            *Arrow 24, Arrow 25, Arrow 26, Arrow 27, Arrow 28, Arrow 29, Arrow 30
-                            */
-                            archerSelect.key.Add(temporarystorage[i]);
-                            archerSelect.names.Add(archerData[temporarystorage[i]][2]);
-                            archerSelect.gender.Add(archerData[temporarystorage[i]][5]);
-                            archerSelect.school.Add(archerData[temporarystorage[i]][1]);
-                            archerSelect.grade.Add(archerData[temporarystorage[i]][4]);
+                            for (int i = 0; i < temporarystorage.Count; i++)
+                            {
+                                /*tournament name, school name, archer name("Graham Jones"), archer history ID,
+                                *grade, gender, state, country, end date, range type, division type (school only not gender),
+                                *rank (gender and divison, ex. High School Boys), score, 10s, 9s, 8s, 7s, Arrow 1, Arrow 2, Arrow 3,
+                                *Arrow 4, Arrow 5, Arrow 6, Arrow 7, Arrow 8, Arrow 9, Arrow 10, Arrow 11, Arrow 12, Arrow 13,
+                                *Arrow 14, Arrow 15, Arrow 16, Arrow 17, Arrow 18, Arrow 19, Arrow 20, Arrow 21, Arrow 22, Arrow 23,
+                                *Arrow 24, Arrow 25, Arrow 26, Arrow 27, Arrow 28, Arrow 29, Arrow 30
+                                */
+                                archerSelect.key.Add(temporarystorage[i]);
+                                archerSelect.names.Add(archerData[temporarystorage[i]][2]);
+                                archerSelect.gender.Add(archerData[temporarystorage[i]][5]);
+                                archerSelect.school.Add(archerData[temporarystorage[i]][1]);
+                                archerSelect.grade.Add(archerData[temporarystorage[i]][4]);
 
+                            }
+                            archerSelect.ShowDialog(this);
                         }
-                        archerSelect.ShowDialog(this);
+                        else
+                        {
+                            changeItemShowing(temporarystorage[0]);
+                        }
                     }
                     else
-                    { 
-                        changeItemShowing(temporarystorage[0]);
+                    {
+                        changeItemShowing(lstSecondary.SelectedItem.ToString());
                     }
                 }
                 else

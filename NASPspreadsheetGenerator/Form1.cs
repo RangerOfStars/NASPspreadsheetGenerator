@@ -426,7 +426,8 @@ namespace NASPspreadsheetGenerator
 
                     if (girls.Count> 0)
                     {
-                        output += $"Top 10 {schoolDivision} Girls\n";
+                        output += $"\nTop 10 {schoolDivision} Girls\n";
+                        girls.Sort();
                         foreach(string i in girls)
                         {
                             output += i + "\n";
@@ -435,7 +436,8 @@ namespace NASPspreadsheetGenerator
 
                     if (boys.Count > 0)
                     {
-                        output += $"Top 10 {schoolDivision} Boys:\n";
+                        output += $"\nTop 10 {schoolDivision} Boys:\n";
+                        boys.Sort();
                         foreach (string i in boys)
                         {
                             output += i + "\n";
